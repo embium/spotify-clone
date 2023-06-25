@@ -7,6 +7,7 @@ import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 
 import Button from "./Button";
+import useAuthModal from "@/hooks/useAuthModal";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
+  const authModal = useAuthModal();
   const router = useRouter();
 
   const handleLogout = () => {};
@@ -117,7 +119,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           <>
             <div>
               <Button
-                onClick={() => {}}
+                onClick={authModal.onOpen}
                 className="
                   bg-transparent
                   font-medium
@@ -129,7 +131,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             </div>
             <div>
               <Button
-                onClick={() => {}}
+                onClick={authModal.onOpen}
                 className="
                   bg-white
                   px-6
@@ -142,6 +144,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           </>
         </div>
       </div>
+      {children}
     </div>
   );
 };
